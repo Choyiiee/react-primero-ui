@@ -45,14 +45,14 @@ h1, h2, h3 {
 }
 
 @keyframes float {
-  0% { transform: translateY(0px) rotate(-5deg); }
-  50% { transform: translateY(-12px) rotate(-3deg); }
-  100% { transform: translateY(0px) rotate(-5deg); }
+  0% { transform: translateY(-10px) rotate(-5deg); }
+  50% { transform: translateY(-22px) rotate(-3deg); }
+  100% { transform: translateY(-10px) rotate(-5deg); }
 }
 
 @keyframes floatDelayed {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
   100% { transform: translateY(0px); }
 }
 
@@ -379,31 +379,90 @@ h1, h2, h3 {
   animation: floatDelayed 5.5s ease-in-out infinite;
 }
 
-.cup-mockup {
-  width: clamp(120px, 25vw, 160px);
-  height: clamp(220px, 45vw, 280px);
-  border-radius: 10px 10px 40px 40px;
-  position: absolute;
-  left: 5%;
-  top: 10%;
-  overflow: hidden;
-  box-shadow: 0 15px 35px rgba(59, 36, 27, 0.2);
-  z-index: 1;
-  background-color: rgba(59, 36, 27, 0.05);
+.interactive-phone {
+  cursor: pointer;
 }
 
-.phone-mockup {
-  width: clamp(150px, 30vw, 200px);
-  height: clamp(300px, 60vw, 400px);
-  border: 8px solid var(--color-border);
-  border-radius: 30px;
+/* SHARED SMARTPHONE CONFIGURATION MOCKUPS */
+.phone-mockup-left,
+.phone-mockup-right {
+  width: clamp(150px, 30vw, 195px);
+  height: clamp(300px, 60vw, 390px);
+  border: 11px solid #1c1512; 
+  border-radius: 36px;
   position: absolute;
+  overflow: hidden;
+  background-color: var(--color-white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* LEFT PHONE POSITION & SHADOW PLACEMENT */
+.phone-mockup-left {
+  left: 5%;
+  top: 5%;
+  z-index: 1;
+  box-shadow: 
+    -5px 12px 22px rgba(28, 21, 18, 0.14),
+    -12px 28px 45px rgba(28, 21, 18, 0.18),
+    0 0 0 1px rgba(59, 36, 27, 0.04);
+}
+
+/* RIGHT PHONE POSITION & SHADOW PLACEMENT */
+.phone-mockup-right {
   right: 5%;
   bottom: 0;
-  overflow: hidden;
-  box-shadow: -10px 15px 30px rgba(0, 0, 0, 0.05);
   z-index: 2;
-  background-color: rgba(59, 36, 27, 0.03);
+  box-shadow: 
+    5px 12px 22px rgba(28, 21, 18, 0.14),
+    12px 28px 45px rgba(28, 21, 18, 0.18),
+    0 0 0 1px rgba(59, 36, 27, 0.04);
+}
+
+/* Interactive Hover Reactions for Both Phones */
+.phone-mockup-left:hover {
+  border-color: var(--color-brown);
+  box-shadow: 
+    -8px 18px 30px rgba(59, 36, 27, 0.18),
+    -18px 40px 65px rgba(59, 36, 27, 0.28);
+}
+
+.phone-mockup-right:hover {
+  border-color: var(--color-brown);
+  box-shadow: 
+    8px 18px 30px rgba(59, 36, 27, 0.18),
+    18px 40px 65px rgba(59, 36, 27, 0.28);
+}
+
+/* Micro Device hardware rendering */
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  height: 18px;
+  background: #1c1512;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  z-index: 10;
+}
+
+/* Interior UI Content Layout Container */
+.phone-screen-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #120e0c; /* Matches your layout's dark aesthetic */
+  padding-top: 15px; /* Safely pushes screenshots below the notch */
+}
+
+/* FIXED FULL-SCREEN FITTING RULES */
+.phone-embedded-png {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Shrinks the full layout page cleanly inside the viewport */
+  object-position: top center; /* Snaps the viewport beginning directly below the phone status zone */
+  display: block;
 }
 
 .decorative-dot {
@@ -413,17 +472,17 @@ h1, h2, h3 {
   border-radius: 50%;
   position: absolute;
   bottom: 15%;
-  left: 35%;
+  left: 46%;
   z-index: 0;
-  opacity: 0.25;
+  opacity: 0.2;
 }
 
 /* ==========================================================================
-   4. REDESIGNED STANDOUT MENU SECTION (PREMIUM CAROUSEL)
+   4. STANDOUT MENU SECTION (PREMIUM CAROUSEL)
    ========================================================================== */
 .menu-section {
   padding: clamp(5rem, 10vw, 7rem) 0;
-  background-color: #161210; /* Dark premium coffee background creates extreme separation */
+  background-color: #161210; 
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -432,7 +491,6 @@ h1, h2, h3 {
   position: relative;
 }
 
-/* Background texture highlights */
 .menu-section::before {
   content: '';
   position: absolute;
@@ -476,7 +534,6 @@ h1, h2, h3 {
   font-size: clamp(0.9rem, 1.8vw, 1.05rem);
 }
 
-/* Viewport structure */
 .menu-marquee-viewport {
   width: 100%;
   overflow: hidden;
@@ -492,7 +549,6 @@ h1, h2, h3 {
   width: max-content;
 }
 
-/* Premium Structured Cards */
 .menu-card {
   background: #231c18;
   border-radius: 20px;
@@ -533,7 +589,6 @@ h1, h2, h3 {
   transform: scale(1.06);
 }
 
-/* Overlay refinement */
 .menu-hover-overlay {
   position: absolute;
   top: 0;
@@ -570,7 +625,6 @@ h1, h2, h3 {
   transform: translateY(0);
 }
 
-/* Typography arrangement inside card */
 .menu-text-content {
   padding: 1.5rem 1.75rem;
   display: flex;
@@ -625,7 +679,6 @@ h1, h2, h3 {
   transform: translateX(3px);
 }
 
-/* Call-to-action block wrapper */
 .menu-footer-actions {
   margin-top: 1rem;
   z-index: 2;
@@ -794,11 +847,44 @@ h1, h2, h3 {
     flex-direction: column;
     text-align: center;
     padding: 4rem 1.5rem;
+    gap: 2.5rem;
   }
 
   .story-image-group {
-    height: clamp(360px, 80vw, 450px);
-    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.5rem;
+    height: auto;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
+
+  /* Shared Mobile Phone Adjustments */
+  .phone-mockup-left,
+  .phone-mockup-right {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    flex: 0 0 clamp(135px, 32vw, 175px);
+    height: clamp(270px, 64vw, 350px);
+    border-width: 8px;
+    box-shadow: 
+      0 8px 16px rgba(28, 21, 18, 0.12),
+      0 20px 40px rgba(28, 21, 18, 0.18);
+  }
+  
+  .phone-notch {
+    height: 12px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .decorative-dot {
+    display: none;
   }
 
   .footer-bottom {
@@ -816,11 +902,14 @@ h1, h2, h3 {
 
 @media (max-width: 480px) {
   .story-image-group {
-    max-width: 320px;
+    gap: 0.75rem;
   }
   
-  .phone-mockup {
-    border-width: 5px;
+  .phone-mockup-left,
+  .phone-mockup-right {
+    flex: 0 0 130px;
+    height: 260px;
+    border-width: 6px;
   }
 
   .footer-policy {

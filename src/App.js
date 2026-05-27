@@ -8,6 +8,8 @@ import berryCheese from './assets/berrycheese.jpg';
 import irishCream from './assets/irishcream.jpg';
 import javaJelly from './assets/javajelly.jpg';
 import latteImg from './assets/latte.jpg';
+import ui1 from './assets/ui1.jpg'; 
+import ui2 from './assets/ui2.jpg'; 
 
 function App() {
   const [navActive, setNavActive] = useState(false);
@@ -123,8 +125,33 @@ function App() {
           <button className="primary-btn animated-btn">Our Story</button>
         </div>
         <div className="story-image-group">
-          <div className="cup-mockup floating-element"></div>
-          <div className="phone-mockup floating-element-delayed"></div>
+          
+          {/* Left Interactive Phone Mockup with ui1.jpg */}
+          <motion.div 
+            className="phone-mockup-left floating-element interactive-phone"
+            whileHover={{ scale: 1.04, y: -18, rotate: -4 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          >
+            <div className="phone-notch"></div>
+            <div className="phone-screen-content">
+              <img src={ui1} alt="Primero Mobile App UI Main View" className="phone-embedded-png" />
+            </div>
+          </motion.div>
+          
+          {/* Right Interactive Phone Mockup with ui2.jpg */}
+          <motion.div 
+            className="phone-mockup-right floating-element-delayed interactive-phone"
+            whileHover={{ scale: 1.04, y: -8, rotate: 1 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+          >
+            <div className="phone-notch"></div>
+            <div className="phone-screen-content">
+              <img src={ui2} alt="Primero Mobile App UI Secondary View" className="phone-embedded-png" />
+            </div>
+          </motion.div>
+
           <div className="decorative-dot"></div>
         </div>
       </section>
