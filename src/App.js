@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import './App.css'; 
+import ContactUs from './ContactUs';
 
 import primerobroll from './assets/primerobroll.mp4'; 
 import primerologo from './assets/primerologo.jpg';
@@ -11,38 +13,8 @@ import latteImg from './assets/latte.jpg';
 import ui1 from './assets/ui1.jpg'; 
 import ui2 from './assets/ui2.jpg'; 
 
-function App() {
-  const [navActive, setNavActive] = useState(false);
-
-  const menuItems = [
-    { name: 'Spanish Latté', type: 'Ice/Hot', category: 'Latté', image: latteImg },
-    { name: 'Berry Cheesecake', type: 'Ice', category: 'Frappes', image: berryCheese },
-    { name: 'Irish Cream', type: 'Ice', category: 'Frappes', image: irishCream },
-    { name: 'Triple Java Jelly', type: 'Ice', category: 'Frappes', image: javaJelly },
-    { name: 'CEO Latté', type: 'Hot', category: 'Latté', image: latteImg }
-  ];
-
-  const duplicatedMenu = [...menuItems, ...menuItems, ...menuItems];
-
-  const handleCardMouseMove = (e) => {
-    const card = e.currentTarget;
-    const box = card.getBoundingClientRect();
-    const x = e.clientX - box.left - box.width / 2;
-    const y = e.clientY - box.top - box.height / 2;
-    
-    const angleX = -(y / (box.height / 2)) * 8;
-    const angleY = (x / (box.width / 2)) * 8;
-    
-    card.style.setProperty('--rx', `${angleX}deg`);
-    card.style.setProperty('--ry', `${angleY}deg`);
-  };
-
-  const handleCardMouseLeave = (e) => {
-    const card = e.currentTarget;
-    card.style.setProperty('--rx', '0deg');
-    card.style.setProperty('--ry', '0deg');
-  };
-
+// --- MAIN HOME VIEW COMPONENT ---
+function HomeView({ duplicatedMenu, handleCardMouseMove, handleCardMouseLeave }) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -62,43 +34,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <nav className="navbar">
-        <div className="nav-container">
-          <button 
-            className={`mobile-toggle ${navActive ? 'active' : ''}`} 
-            onClick={() => setNavActive(!navActive)}
-            aria-label="Toggle navigation menu"
-          >
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
-          </button>
-
-          <ul className={`nav-links left-links ${navActive ? 'open' : ''}`}>
-            <li><a href="#story" onClick={() => setNavActive(false)}>OUR STORY</a></li>
-            <li><a href="#menu" onClick={() => setNavActive(false)}>MENU</a></li>
-            <li><a href="#app" onClick={() => setNavActive(false)}>PRIMERO APP</a></li>
-            <li><a href="#careers" onClick={() => setNavActive(false)}>CAREERS</a></li>
-          </ul>
-          
-          <div className="logo-container">
-            <div className="logo-img">
-              <img src={primerologo} alt="Primero Coffee Brand Logo" className="logo-photo-render" />
-            </div>
-          </div>
-
-          <ul className={`nav-links right-links ${navActive ? 'open' : ''}`}>
-            <li><a href="#find" onClick={() => setNavActive(false)}>FIND A STORE</a></li>
-            <li><a href="#contact" onClick={() => setNavActive(false)}>CONTACT US</a></li>
-            <li className="search-bar">
-              <span className="search-icon">🔍</span>
-              <input type="text" placeholder="SEARCH..." />
-            </li>
-          </ul>
-        </div>
-      </nav>
-
+    <>
       <header className="hero">
         <video autoPlay loop muted playsInline className="hero-video">
           <source src={primerobroll} type="video/mp4" />
@@ -124,9 +60,7 @@ function App() {
           </p>
           <button className="primary-btn animated-btn">Our Story</button>
         </div>
-        <div className="story-image-group">
-          
-          {/* Left Interactive Phone Mockup with ui1.jpg */}
+        <div className="story-image-group" id="app">
           <motion.div 
             className="phone-mockup-left floating-element interactive-phone"
             whileHover={{ scale: 1.04, y: -18, rotate: -4 }}
@@ -139,7 +73,6 @@ function App() {
             </div>
           </motion.div>
           
-          {/* Right Interactive Phone Mockup with ui2.jpg */}
           <motion.div 
             className="phone-mockup-right floating-element-delayed interactive-phone"
             whileHover={{ scale: 1.04, y: -8, rotate: 1 }}
@@ -156,7 +89,6 @@ function App() {
         </div>
       </section>
 
-      {/* --- STANDOUT MENU SECTION --- */}
       <section className="menu-section reveal-on-scroll" id="menu">
         <div className="menu-header-content">
           <span className="menu-badge">OUR HANDCRAFTED BREWS</span>
@@ -210,8 +142,111 @@ function App() {
           </button>
         </div>
       </section>
+    </>
+  );
+}
 
-      <footer className="footer reveal-on-scroll">
+// --- MAIN WRAPPER CORE ---
+function App() {
+  const [navActive, setNavActive] = useState(false);
+
+  const menuItems = [
+    { name: 'Spanish Latté', type: 'Ice/Hot', category: 'Latté', image: latteImg },
+    { name: 'Berry Cheesecake', type: 'Ice', category: 'Frappes', image: berryCheese },
+    { name: 'Irish Cream', type: 'Ice', category: 'Frappes', image: irishCream },
+    { name: 'Triple Java Jelly', type: 'Ice', category: 'Frappes', image: javaJelly },
+    { name: 'CEO Latté', type: 'Hot', category: 'Latté', image: latteImg }
+  ];
+
+  const duplicatedMenu = [...menuItems, ...menuItems, ...menuItems];
+
+  const handleCardMouseMove = (e) => {
+    const card = e.currentTarget;
+    const box = card.getBoundingClientRect();
+    const x = e.clientX - box.left - box.width / 2;
+    const y = e.clientY - box.top - box.height / 2;
+    const angleX = -(y / (box.height / 2)) * 8;
+    const angleY = (x / (box.width / 2)) * 8;
+    card.style.setProperty('--rx', `${angleX}deg`);
+    card.style.setProperty('--ry', `${angleY}deg`);
+  };
+
+  const handleCardMouseLeave = (e) => {
+    const card = e.currentTarget;
+    card.style.setProperty('--rx', '0deg');
+    card.style.setProperty('--ry', '0deg');
+  };
+
+  // FIXED: No longer references data.name to avoid runtime crash shown in image_c98ee3.png
+  const handleContactSubmit = () => {
+    console.log("Form submitted safely via Formspree!");
+  };
+
+  const handleHashLink = (e, targetId) => {
+    setNavActive(false);
+    if (window.location.pathname !== '/') {
+      return; 
+    }
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <div className="App">
+      <nav className="navbar">
+        <div className="nav-container">
+          <button 
+            className={`mobile-toggle ${navActive ? 'active' : ''}`} 
+            onClick={() => setNavActive(!navActive)}
+            aria-label="Toggle navigation menu"
+          >
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </button>
+
+          <ul className={`nav-links left-links ${navActive ? 'open' : ''}`}>
+            <li><Link to="/" onClick={() => setNavActive(false)}>HOME</Link></li>
+            <li><a href="/#story" onClick={(e) => handleHashLink(e, 'story')}>OUR STORY</a></li>
+            <li><a href="/#menu" onClick={(e) => handleHashLink(e, 'menu')}>MENU</a></li>
+            <li><a href="/#app" onClick={(e) => handleHashLink(e, 'app')}>PRIMERO APP</a></li>
+          </ul>
+          
+          <div className="logo-container">
+            <Link to="/" className="logo-img" onClick={() => setNavActive(false)}>
+              <img src={primerologo} alt="Primero Coffee Brand Logo" className="logo-photo-render" />
+            </Link>
+          </div>
+
+          <ul className={`nav-links right-links ${navActive ? 'open' : ''}`}>
+            <li><a href="/#find" onClick={(e) => handleHashLink(e, 'find')}>FIND A STORE</a></li>
+            <li><Link to="/contact" onClick={() => setNavActive(false)}>CONTACT US</Link></li>
+            <li className="search-bar">
+              <span className="search-icon">🔍</span>
+              <input type="text" placeholder="SEARCH..." />
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      {/* --- MULTI-PAGE ROUTE HANDLING --- */}
+      <Routes>
+        <Route path="/" element={
+          <HomeView 
+            duplicatedMenu={duplicatedMenu} 
+            handleCardMouseMove={handleCardMouseMove} 
+            handleCardMouseLeave={handleCardMouseLeave} 
+          />
+        } />
+        <Route path="/contact" element={
+          <ContactUs onSubmitSuccess={handleContactSubmit} />
+        } />
+      </Routes>
+
+      <footer className="footer">
         <div className="social-links">
           <span>Follow us on</span>
           <div className="social-icons">

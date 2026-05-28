@@ -383,7 +383,6 @@ h1, h2, h3 {
   cursor: pointer;
 }
 
-/* SHARED SMARTPHONE CONFIGURATION MOCKUPS */
 .phone-mockup-left,
 .phone-mockup-right {
   width: clamp(150px, 30vw, 195px);
@@ -396,7 +395,6 @@ h1, h2, h3 {
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* LEFT PHONE POSITION & SHADOW PLACEMENT */
 .phone-mockup-left {
   left: 5%;
   top: 5%;
@@ -407,7 +405,6 @@ h1, h2, h3 {
     0 0 0 1px rgba(59, 36, 27, 0.04);
 }
 
-/* RIGHT PHONE POSITION & SHADOW PLACEMENT */
 .phone-mockup-right {
   right: 5%;
   bottom: 0;
@@ -418,7 +415,6 @@ h1, h2, h3 {
     0 0 0 1px rgba(59, 36, 27, 0.04);
 }
 
-/* Interactive Hover Reactions for Both Phones */
 .phone-mockup-left:hover {
   border-color: var(--color-brown);
   box-shadow: 
@@ -433,7 +429,6 @@ h1, h2, h3 {
     18px 40px 65px rgba(59, 36, 27, 0.28);
 }
 
-/* Micro Device hardware rendering */
 .phone-notch {
   position: absolute;
   top: 0;
@@ -447,21 +442,19 @@ h1, h2, h3 {
   z-index: 10;
 }
 
-/* Interior UI Content Layout Container */
 .phone-screen-content {
   width: 100%;
   height: 100%;
   position: relative;
-  background: #120e0c; /* Matches your layout's dark aesthetic */
-  padding-top: 15px; /* Safely pushes screenshots below the notch */
+  background: #120e0c;
+  padding-top: 15px;
 }
 
-/* FIXED FULL-SCREEN FITTING RULES */
 .phone-embedded-png {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Shrinks the full layout page cleanly inside the viewport */
-  object-position: top center; /* Snaps the viewport beginning directly below the phone status zone */
+  object-fit: contain;
+  object-position: top center;
   display: block;
 }
 
@@ -781,7 +774,286 @@ h1, h2, h3 {
   color: var(--color-brown);
 }
 
+/* ==========================================================================
+   5. STANDALONE PREMIUM CONTACT PAGE THEME
+   ========================================================================== */
+.contact-standalone-section {
+  min-height: calc(100vh - 80px);
+  background-color: var(--color-black);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+.contact-blur-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(195, 163, 122, 0.04) 0%, transparent 70%);
+  top: -10%;
+  right: -5%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4.5rem;
+  align-items: center;
+  z-index: 1;
+}
+
+.contact-brand-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.5rem;
+}
+
+.contact-mini-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(195, 163, 122, 0.4);
+  object-fit: cover;
+}
+
+.contact-editorial-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  color: var(--color-cream);
+}
+
+.editorial-title {
+  font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin: 1rem 0 1.5rem;
+  color: var(--color-white);
+}
+
+.editorial-lead {
+  color: #a89e94;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  max-width: 520px;
+}
+
+.luxury-directory {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  margin: 3.5rem 0;
+}
+
+.directory-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.directory-num {
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
+  color: var(--color-accent-gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding-top: 2px;
+}
+
+.directory-details h5 {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--color-white);
+  margin-bottom: 0.4rem;
+}
+
+.directory-details p {
+  color: #c4b9ae;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 400px;
+}
+
+.directory-details .highlighted-link {
+  color: var(--color-accent-gold);
+  font-weight: 500;
+}
+
+.back-home-link {
+  color: #a89e94;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+  display: inline-block;
+}
+
+.back-home-link:hover {
+  color: var(--color-accent-gold);
+}
+
+.contact-surface-card {
+  background: #181311;
+  border: 1px solid rgba(195, 163, 122, 0.1);
+  border-radius: 28px;
+  padding: 3.5rem 3rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.card-inner-header h3 {
+  color: var(--color-white);
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.card-inner-header p {
+  color: #8a7f75;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: 2.5rem;
+}
+
+.luxury-interactive-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.floating-field-group {
+  position: relative;
+  width: 100%;
+}
+
+.floating-field-group input,
+.floating-field-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 12px 0;
+  font-size: 0.95rem;
+  color: var(--color-white);
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+.floating-field-group textarea {
+  resize: none;
+}
+
+.floating-field-group label {
+  position: absolute;
+  left: 0;
+  top: 14px;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 1;
+}
+
+.field-border-track {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--color-accent-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  z-index: 3;
+}
+
+.floating-field-group input:focus ~ label,
+.floating-field-group input:not(:placeholder-shown) ~ label,
+.floating-field-group textarea:focus ~ label,
+.floating-field-group textarea:not(:placeholder-shown) ~ label {
+  top: -14px;
+  font-size: 0.65rem;
+  color: var(--color-accent-gold);
+  letter-spacing: 1px;
+}
+
+.floating-field-group input:focus ~ .field-border-track,
+.floating-field-group textarea:focus ~ .field-border-track {
+  transform: scaleX(1);
+}
+
+.floating-field-group input:focus,
+.floating-field-group textarea:focus {
+  border-bottom-color: transparent;
+}
+
+.premium-submit-action {
+  width: 100%;
+  background: var(--color-accent-gold);
+  color: #120e0c;
+  border: none;
+  padding: 16px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.35s ease, transform 0.2s ease, box-shadow 0.35s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-icon-wrapper {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.premium-submit-action:hover {
+  background-color: var(--color-cream);
+  box-shadow: 0 15px 35px rgba(195, 163, 122, 0.15);
+}
+
+.premium-submit-action:hover .btn-icon-wrapper {
+  transform: translate(3px, -3px);
+}
+
+.premium-submit-action:active {
+  transform: scale(0.985);
+}
+
 /* --- Responsive Media Queries --- */
+@media (max-width: 1024px) {
+  .contact-wrapper {
+    gap: 3rem;
+  }
+  .contact-surface-card {
+    padding: 3rem 2rem;
+  }
+}
+
 @media (max-width: 900px) {
   .mobile-toggle {
     display: flex;
@@ -861,7 +1133,6 @@ h1, h2, h3 {
     padding: 1rem 0;
   }
 
-  /* Shared Mobile Phone Adjustments */
   .phone-mockup-left,
   .phone-mockup-right {
     position: relative;
@@ -898,6 +1169,27 @@ h1, h2, h3 {
     justify-content: center;
     flex-wrap: wrap;
   }
+
+  /* Standalone Premium Contact Page Responsive Adapters */
+  .contact-standalone-section {
+    padding: 3rem 1.5rem;
+  }
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .contact-editorial-panel {
+    text-align: center;
+    align-items: center;
+  }
+  .editorial-lead {
+    margin: 0 auto;
+  }
+  .luxury-directory {
+    margin: 2.5rem 0;
+    align-items: center;
+    text-align: left;
+  }
 }
 
 @media (max-width: 480px) {
@@ -915,5 +1207,13 @@ h1, h2, h3 {
   .footer-policy {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .contact-surface-card {
+    padding: 2.5rem 1.5rem;
+    border-radius: 20px;
+  }
+  .luxury-interactive-form {
+    gap: 1.8rem;
   }
 }
