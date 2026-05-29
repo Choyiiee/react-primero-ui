@@ -11,6 +11,17 @@
   --rx: 0deg;
   --ry: 0deg;
 }
+/* Card Lift and Glow Effect on Hover */
+.menu-item-card-hover:hover {
+  transform: translateY(-8px);
+  border-color: rgba(195, 163, 122, 0.35) !important;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Subtle Image Scale Effect */
+.menu-item-card-hover:hover .menu-item-img {
+  transform: scale(1.06);
+}
 
 * {
   margin: 0;
@@ -1003,13 +1014,138 @@ h1, h2, h3 {
 
 .premium-submit-action:active { transform: scale(0.985); }
 
+/* ==========================================================================
+   5. PREMIUM STORE LOCATOR MODULE (.store-standalone-section)
+   ========================================================================== */
+.store-standalone-section {
+  min-height: calc(100vh - 80px);
+  background-color: var(--color-black);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 5%;
+  overflow: hidden;
+  width: 100%;
+}
+
+.store-blur-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(195, 163, 122, 0.05) 0%, transparent 70%);
+  bottom: -10%;
+  left: -5%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.store-container-wrapper {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items: stretch;
+  z-index: 1;
+}
+
+.store-editorial-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: var(--color-cream);
+}
+
+.store-directory-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+/* Custom Scrollbar for Boutique List Layout */
+.store-directory-list::-webkit-scrollbar {
+  width: 4px;
+}
+.store-directory-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+}
+.store-directory-list::-webkit-scrollbar-thumb {
+  background: rgba(195, 163, 122, 0.2);
+  border-radius: 2px;
+}
+.store-directory-list::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-gold);
+}
+
+.store-directory-card {
+  background: #181311;
+  border: 1px solid rgba(195, 163, 122, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.store-directory-card:hover {
+  border-color: rgba(195, 163, 122, 0.25);
+  background: #201916;
+  transform: translateX(4px);
+}
+
+.store-card-active {
+  border-color: var(--color-accent-gold);
+  background: #231c18;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.store-meta-text {
+  font-size: 0.8rem !important;
+  color: #8a7f75 !important;
+  margin-top: 0.25rem;
+}
+
+.store-map-surface-card {
+  background: #181311;
+  border: 1px solid rgba(195, 163, 122, 0.1);
+  border-radius: 28px;
+  padding: 0.75rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  min-height: 550px;
+  display: flex;
+}
+
+.premium-map-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.map-placeholder-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a7f75;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
 
 /* ==========================================================================
-   5. RESPONSIVE LAYOUT ENGINE (BREAKPOINTS)
+   6. RESPONSIVE LAYOUT ENGINE (BREAKPOINTS)
    ========================================================================== */
 @media (max-width: 1024px) {
   .contact-wrapper { gap: 3rem; }
   .contact-surface-card { padding: 3rem 2rem; }
+  .store-container-wrapper { gap: 2rem; }
 }
 
 @media (max-width: 900px) {
@@ -1019,39 +1155,68 @@ h1, h2, h3 {
   .mobile-toggle.active .bar:nth-child(2) { opacity: 0; }
   .mobile-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-  /* FIXED: Combined and balanced both link groups inside a clean full-height container layout */
-  .nav-links {
+  /* 
+     --- FIXED: SYSTEM OVERHAUL FOR BOTH NAVIGATION LINK GROUP LISTS ---
+     Instead of only moving one group, we strip position styles off desktop lists 
+     and turn the wrapper into a scrolling dropdown drawer where elements stack inline.
+  */
+  .nav-container {
+    overflow: visible;
+  }
+
+  /* Shared hidden/visible overlay container style */
+  .left-links,
+  .right-links {
     position: fixed;
     top: 80px;
-    left: -100%;
     width: 100%;
-    height: calc(100vh - 80px); /* Fill screen cleanly below navbar height */
     background-color: var(--color-black);
     flex-direction: column;
-    justify-content: flex-start;
-    gap: 2rem;
-    padding: 3rem 2rem;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+    gap: 1.75rem;
+    padding: 0;
     transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    overflow-y: auto;
+    z-index: 999;
+    list-style: none;
+    display: flex;
   }
 
-  .nav-links.open { left: 0; }
+  /* Top Group holds Home, Primero App, Menu links */
+  .left-links {
+    left: -100%;
+    height: 200px;
+    padding-top: 2.5rem;
+    justify-content: flex-start;
+  }
 
-  /* Forces child menu lists to follow clean alignment constraints on mobile */
-  .left-links, .right-links {
+  /* Bottom Group holds Find Us, Contact Us, and Search Bar items */
+  .right-links {
+    left: -100%;
+    top: 280px; /* Positions right after the left links stack layout */
+    height: calc(100vh - 280px); 
+    padding-top: 1.5rem;
+    justify-content: flex-start;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Simultaneously slide BOTH hidden link layers into active frame viewport */
+  .left-links.open,
+  .right-links.open {
+    left: 0;
+  }
+
+  /* Formatting child configuration list boundaries */
+  .left-links li, 
+  .right-links li {
     flex: none;
     width: 100%;
-    align-items: center;
+    text-align: center;
   }
-  
-  .left-links { justify-content: center; }
-  .right-links { 
-    justify-content: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    padding-top: 2rem;
-    margin-top: 0.5rem;
+
+  .left-links a,
+  .right-links a {
+    font-size: 0.9rem; /* Slightly larger text for mobile finger targets */
+    display: inline-block;
   }
 
   .logo-container {
@@ -1060,14 +1225,21 @@ h1, h2, h3 {
     transform: translateX(-50%);
   }
 
+  /* Search layout adjustment container styling inside list engine framework */
   .search-bar {
-    width: 100%;
-    max-width: 260px;
+    width: 85%;
+    max-width: 280px;
+    margin: 0.5rem auto 0;
     justify-content: center;
+    padding: 0.6rem 1.2rem;
   }
 
-  .search-bar input { width: 100%; }
+  .search-bar input { 
+    width: 100%; 
+    font-size: 0.85rem;
+  }
 
+  /* Keep basic components intact */
   .story-section {
     flex-direction: column;
     text-align: center;
@@ -1129,6 +1301,26 @@ h1, h2, h3 {
     margin: 2.5rem 0;
     align-items: center;
     text-align: left;
+  }
+
+  /* --- Store Locator Responsive Breakpoints --- */
+  .store-container-wrapper {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .store-editorial-panel {
+    text-align: center;
+    align-items: center;
+  }
+  .store-directory-list {
+    width: 100%;
+    max-height: 350px;
+  }
+  .store-directory-card {
+    text-align: left;
+  }
+  .store-map-surface-card {
+    min-height: 450px;
   }
 }
 

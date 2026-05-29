@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { duplicatedMenu } from '../data/menuData';
+import { useNavigate } from 'react-router-dom'; // Added for page routing
+import { menuItems } from '../data/menuData'; 
 import primerobroll from '../assets/primerobroll.mp4';
 import ui1 from '../assets/ui1.jpg';
 import ui2 from '../assets/ui2.jpg';
 
 function HomeView() {
+  const navigate = useNavigate(); // Initializes the page router engine
+
   // Reveal animations on scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -119,7 +122,7 @@ function HomeView() {
             }}
             whileHover={{ animationPlayState: "paused" }}
           >
-            {duplicatedMenu.map((item, index) => (
+            {menuItems.map((item, index) => (
               <div 
                 className="menu-card tilt-card-3d" 
                 key={index}
@@ -133,10 +136,10 @@ function HomeView() {
                   </div>
                 </div>
                 <div className="menu-text-content">
-                  <span className="menu-card-category">{item.category}</span>
+                  <span className="menu-card-category" style={{ textTransform: 'uppercase' }}>{item.category}</span>
                   <h3 className="menu-name">{item.name}</h3>
                   <div className="menu-details">
-                    <span className="menu-type-tag">{item.type}</span>
+                    <span className="menu-type-tag">{item.tags ? item.tags[0] : 'Premium'}</span>
                     <span className="menu-order-cta">Order Now →</span>
                   </div>
                 </div>
@@ -146,7 +149,8 @@ function HomeView() {
         </div>
 
         <div className="menu-footer-actions">
-          <button className="menu-discover-btn">
+          {/* Updated: Added click handler redirecting straight to your /menu view route */}
+          <button className="menu-discover-btn" onClick={() => navigate('/menu')}>
             <span>Explore Full Menu</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </button>
