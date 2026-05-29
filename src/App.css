@@ -1,4 +1,6 @@
-/* --- Global Variables Setup --- */
+/* ==========================================================================
+   1. GLOBAL SYSTEM SETTINGS & PARAMETERS
+   ========================================================================== */
 :root {
   --color-black: #111111;         
   --color-cream: #faf4ea;         
@@ -32,7 +34,9 @@ h1, h2, h3 {
   font-family: 'Georgia', serif;
 }
 
-/* --- Core Keyframe Animations --- */
+/* ==========================================================================
+   2. MOTION SYSTEM & KEYFRAME ENGINES
+   ========================================================================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -56,7 +60,7 @@ h1, h2, h3 {
   100% { transform: translateY(0px); }
 }
 
-/* --- Scroll Entrance Reveal Classes --- */
+/* --- Scroll Dynamic Triggers --- */
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(50px);
@@ -73,7 +77,11 @@ h1, h2, h3 {
   animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* --- 1. Navbar Layout --- */
+/* ==========================================================================
+   3. DESKTOP INTERFACE CORE SHELL
+   ========================================================================== */
+
+/* --- Navigation Header --- */
 .navbar {
   background-color: var(--color-black);
   position: sticky;
@@ -102,13 +110,8 @@ h1, h2, h3 {
   flex: 1;
 }
 
-.left-links {
-  justify-content: flex-start;
-}
-
-.right-links {
-  justify-content: flex-end;
-}
+.left-links { justify-content: flex-start; }
+.right-links { justify-content: flex-end; }
 
 .nav-links a {
   text-decoration: none;
@@ -135,10 +138,7 @@ h1, h2, h3 {
   transition: transform 0.3s ease-out;
 }
 
-.nav-links a:hover {
-  color: var(--color-cream);
-}
-
+.nav-links a:hover { color: var(--color-cream); }
 .nav-links a:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
@@ -201,9 +201,7 @@ h1, h2, h3 {
   color: var(--color-white);
 }
 
-.search-bar input::placeholder {
-  color: rgba(255, 255, 255, 0.5);
-}
+.search-bar input::placeholder { color: rgba(255, 255, 255, 0.5); }
 
 .mobile-toggle {
   display: none;
@@ -224,7 +222,7 @@ h1, h2, h3 {
   transition: all 0.3s ease;
 }
 
-/* --- 2. Hero Section --- */
+/* --- Cinema Hero Section --- */
 .hero {
   position: relative;
   height: 80vh;
@@ -282,13 +280,12 @@ h1, h2, h3 {
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   letter-spacing: 0.5px;
   color: rgba(255, 255, 255, 0.9);
   padding: 0 0.5rem;
 }
 
-/* --- 3. Story Section --- */
+/* --- Brand Story Section --- */
 .story-section {
   display: flex;
   align-items: center;
@@ -371,17 +368,9 @@ h1, h2, h3 {
   justify-content: center;
 }
 
-.floating-element {
-  animation: float 5s ease-in-out infinite;
-}
-
-.floating-element-delayed {
-  animation: floatDelayed 5.5s ease-in-out infinite;
-}
-
-.interactive-phone {
-  cursor: pointer;
-}
+.floating-element { animation: float 5s ease-in-out infinite; }
+.floating-element-delayed { animation: floatDelayed 5.5s ease-in-out infinite; }
+.interactive-phone { cursor: pointer; }
 
 .phone-mockup-left,
 .phone-mockup-right {
@@ -470,9 +459,7 @@ h1, h2, h3 {
   opacity: 0.2;
 }
 
-/* ==========================================================================
-   4. STANDOUT MENU SECTION (PREMIUM CAROUSEL)
-   ========================================================================== */
+/* --- Handcrafted Menu Showcase --- */
 .menu-section {
   padding: clamp(5rem, 10vw, 7rem) 0;
   background-color: #161210; 
@@ -555,6 +542,7 @@ h1, h2, h3 {
   position: relative;
   overflow: hidden;
   transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry));
 }
 
 .menu-card:hover {
@@ -578,9 +566,7 @@ h1, h2, h3 {
   transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.menu-card:hover .menu-item-photo {
-  transform: scale(1.06);
-}
+.menu-card:hover .menu-item-photo { transform: scale(1.06); }
 
 .menu-hover-overlay {
   position: absolute;
@@ -610,13 +596,8 @@ h1, h2, h3 {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.menu-card:hover .menu-hover-overlay {
-  opacity: 1;
-}
-
-.menu-card:hover .overlay-action-btn {
-  transform: translateY(0);
-}
+.menu-card:hover .menu-hover-overlay { opacity: 1; }
+.menu-card:hover .overlay-action-btn { transform: translateY(0); }
 
 .menu-text-content {
   padding: 1.5rem 1.75rem;
@@ -692,22 +673,16 @@ h1, h2, h3 {
   transition: all 0.4s ease;
 }
 
-.menu-discover-btn svg {
-  transition: transform 0.3s ease;
-}
-
+.menu-discover-btn svg { transition: transform 0.3s ease; }
 .menu-discover-btn:hover {
   background: var(--color-accent-gold);
   color: #120e0c;
   border-color: var(--color-accent-gold);
   box-shadow: 0 10px 30px rgba(195, 163, 122, 0.2);
 }
+.menu-discover-btn:hover svg { transform: translateX(4px); }
 
-.menu-discover-btn:hover svg {
-  transform: translateX(4px);
-}
-
-/* --- 5. Footer --- */
+/* --- Footer --- */
 .footer {
   padding: clamp(3rem, 6vw, 4rem) 5% 2rem;
   background-color: var(--color-cream);
@@ -737,9 +712,7 @@ h1, h2, h3 {
   display: inline-block;
 }
 
-.social-hover-icon:hover {
-  transform: scale(1.35) translateY(-3px);
-}
+.social-hover-icon:hover { transform: scale(1.35) translateY(-3px); }
 
 .footer-bottom {
   display: flex;
@@ -754,14 +727,8 @@ h1, h2, h3 {
   margin: 0 auto;
 }
 
-.footer-copyright p {
-  margin-bottom: 5px;
-}
-
-.footer-policy {
-  display: flex;
-  gap: 20px;
-}
+.footer-copyright p { margin-bottom: 5px; }
+.footer-policy { display: flex; gap: 20px; }
 
 .footer-policy a {
   color: var(--color-black);
@@ -770,12 +737,10 @@ h1, h2, h3 {
   font-weight: 500;
 }
 
-.footer-policy a:hover {
-  color: var(--color-brown);
-}
+.footer-policy a:hover { color: var(--color-brown); }
 
 /* ==========================================================================
-   5. STANDALONE PREMIUM CONTACT PAGE THEME
+   4. STANDALONE PREMIUM CONTACT PAGE THEME
    ========================================================================== */
 .contact-standalone-section {
   min-height: calc(100vh - 80px);
@@ -903,9 +868,7 @@ h1, h2, h3 {
   display: inline-block;
 }
 
-.back-home-link:hover {
-  color: var(--color-accent-gold);
-}
+.back-home-link:hover { color: var(--color-accent-gold); }
 
 .contact-surface-card {
   background: #181311;
@@ -956,9 +919,7 @@ h1, h2, h3 {
   z-index: 2;
 }
 
-.floating-field-group textarea {
-  resize: none;
-}
+.floating-field-group textarea { resize: none; }
 
 .floating-field-group label {
   position: absolute;
@@ -1040,63 +1001,57 @@ h1, h2, h3 {
   transform: translate(3px, -3px);
 }
 
-.premium-submit-action:active {
-  transform: scale(0.985);
-}
+.premium-submit-action:active { transform: scale(0.985); }
 
-/* --- Responsive Media Queries --- */
+
+/* ==========================================================================
+   5. RESPONSIVE LAYOUT ENGINE (BREAKPOINTS)
+   ========================================================================== */
 @media (max-width: 1024px) {
-  .contact-wrapper {
-    gap: 3rem;
-  }
-  .contact-surface-card {
-    padding: 3rem 2rem;
-  }
+  .contact-wrapper { gap: 3rem; }
+  .contact-surface-card { padding: 3rem 2rem; }
 }
 
 @media (max-width: 900px) {
-  .mobile-toggle {
-    display: flex;
-  }
+  .mobile-toggle { display: flex; }
 
-  .mobile-toggle.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .mobile-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .mobile-toggle.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+  .mobile-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .mobile-toggle.active .bar:nth-child(2) { opacity: 0; }
+  .mobile-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
+  /* FIXED: Combined and balanced both link groups inside a clean full-height container layout */
   .nav-links {
     position: fixed;
-    top: 70px;
+    top: 80px;
     left: -100%;
     width: 100%;
-    height: calc(50vh - 70px);
+    height: calc(100vh - 80px); /* Fill screen cleanly below navbar height */
     background-color: var(--color-black);
     flex-direction: column;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 2rem 0;
-    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    justify-content: flex-start;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow-y: auto;
   }
 
-  .nav-links.left-links {
-    top: 70px;
+  .nav-links.open { left: 0; }
+
+  /* Forces child menu lists to follow clean alignment constraints on mobile */
+  .left-links, .right-links {
+    flex: none;
+    width: 100%;
+    align-items: center;
   }
   
-  .nav-links.right-links {
-    top: calc(50vh);
-    height: calc(50vh);
-    justify-content: flex-start;
-    border-bottom: none;
-  }
-
-  .nav-links.open {
-    left: 0;
+  .left-links { justify-content: center; }
+  .right-links { 
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 2rem;
+    margin-top: 0.5rem;
   }
 
   .logo-container {
@@ -1106,14 +1061,12 @@ h1, h2, h3 {
   }
 
   .search-bar {
-    width: 80%;
-    max-width: 300px;
+    width: 100%;
+    max-width: 260px;
     justify-content: center;
   }
 
-  .search-bar input {
-    width: 100%;
-  }
+  .search-bar input { width: 100%; }
 
   .story-section {
     flex-direction: column;
@@ -1154,9 +1107,7 @@ h1, h2, h3 {
     border-bottom-right-radius: 10px;
   }
 
-  .decorative-dot {
-    display: none;
-  }
+  .decorative-dot { display: none; }
 
   .footer-bottom {
     flex-direction: column;
@@ -1170,21 +1121,10 @@ h1, h2, h3 {
     flex-wrap: wrap;
   }
 
-  /* Standalone Premium Contact Page Responsive Adapters */
-  .contact-standalone-section {
-    padding: 3rem 1.5rem;
-  }
-  .contact-wrapper {
-    grid-template-columns: 1fr;
-    gap: 4rem;
-  }
-  .contact-editorial-panel {
-    text-align: center;
-    align-items: center;
-  }
-  .editorial-lead {
-    margin: 0 auto;
-  }
+  .contact-standalone-section { padding: 3rem 1.5rem; }
+  .contact-wrapper { grid-template-columns: 1fr; gap: 4rem; }
+  .contact-editorial-panel { text-align: center; align-items: center; }
+  .editorial-lead { margin: 0 auto; }
   .luxury-directory {
     margin: 2.5rem 0;
     align-items: center;
@@ -1193,9 +1133,7 @@ h1, h2, h3 {
 }
 
 @media (max-width: 480px) {
-  .story-image-group {
-    gap: 0.75rem;
-  }
+  .story-image-group { gap: 0.75rem; }
   
   .phone-mockup-left,
   .phone-mockup-right {
@@ -1204,16 +1142,11 @@ h1, h2, h3 {
     border-width: 6px;
   }
 
-  .footer-policy {
-    flex-direction: column;
-    gap: 10px;
-  }
+  .footer-policy { flex-direction: column; gap: 10px; }
 
   .contact-surface-card {
     padding: 2.5rem 1.5rem;
     border-radius: 20px;
   }
-  .luxury-interactive-form {
-    gap: 1.8rem;
-  }
+  .luxury-interactive-form { gap: 1.8rem; }
 }

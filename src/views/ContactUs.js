@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, ValidationError } from '@formspree/react';
-import brandLogo from './assets/primerologo.jpg';
+// UPDATED PATH: Stepping up one folder level to find assets correctly
+import brandLogo from '../assets/primerologo.jpg';
 
 function ContactUs({ onSubmitSuccess }) {
   const [state, handleSubmit] = useForm("xeednqza");
@@ -154,7 +155,7 @@ function ContactUs({ onSubmitSuccess }) {
 
             <div className="floating-field-group">
               <input 
-                type="email" 
+                type="type" 
                 name="email" 
                 value={formValues.email}
                 onChange={handleInputChange}
