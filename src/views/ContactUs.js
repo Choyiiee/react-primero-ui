@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, ValidationError } from '@formspree/react';
-// UPDATED PATH: Stepping up one folder level to find assets correctly
-import brandLogo from '../assets/primerologo.jpg';
+import './ContactUs.css';
 
 function ContactUs({ onSubmitSuccess }) {
   const [state, handleSubmit] = useForm("xeednqza");
@@ -87,10 +86,7 @@ function ContactUs({ onSubmitSuccess }) {
         {/* Left Column: Premium Brand Editorial Content */}
         <div className="contact-editorial-panel" style={{ textAlign: 'center' }}>
           <div className="editorial-header">
-            <div className="contact-brand-identity" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px' }}>
-              <img src={brandLogo} alt="Primero Coffee Logo" className="contact-mini-logo" />
-              <span className="premium-badge">PRIMERO</span>
-            </div>
+            {/* The brand-identity logo element container has been completely removed from here */}
             <h1 className="editorial-title">Connect <br />With Our Roastery.</h1>
             <p className="editorial-lead" style={{ maxWidth: '500px', margin: '0 auto 40px auto' }}>
               Whether you are looking to explore global bean sourcing, inquire about local franchise footprints, or troubleshoot your mobile ordering profile, our corporate baristas are standing by.
@@ -155,7 +151,7 @@ function ContactUs({ onSubmitSuccess }) {
 
             <div className="floating-field-group">
               <input 
-                type="type" 
+                type="email" 
                 name="email" 
                 value={formValues.email}
                 onChange={handleInputChange}

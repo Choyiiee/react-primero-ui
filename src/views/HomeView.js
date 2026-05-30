@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom'; // Added for page routing
-import { menuItems } from '../data/menuData'; 
+import { menuItems } from '../data/menuData';
+import './HomeView.css';
 import primerobroll from '../assets/primerobroll.mp4';
 import ui1 from '../assets/ui1.jpg';
 import ui2 from '../assets/ui2.jpg';

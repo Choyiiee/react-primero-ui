@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { menuItems, categories } from '../data/menuData'; // Cleanly pulled from your data folder!
+import { menuItems, categories } from '../data/menuData';
+import './Menu.css'; // Cleanly pulled from your data folder!
 
 export default function Menu() {
   const [activeFilter, setActiveFilter] = useState('all');
