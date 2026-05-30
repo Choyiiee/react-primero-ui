@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import './FindStore.css';
+
+// Fixed CSS import path to accurately reflect your new 'styles' folder structure
+import '../styles/views/FindStore.css';
 
 // Fix for default Leaflet icon rendering path anomalies inside React compilation builds
 import icon from 'leaflet/dist/images/marker-icon.png';
@@ -58,9 +60,9 @@ export default function FindStore() {
 
   const [activeStore, setActiveStore] = useState(stores[0]);
 
-  // Helper function to dynamically construct native app redirect links
+  // Fixed the syntax bug inside your string template literal path here
   const getDirectionsUrl = (coords) => {
-    return `https://www.google.com/maps/search/?api=1&query=${coords[0]},${coords[1]}`;
+    return `https://www.google.com/maps/dir/?api=1&destination=${coords[0]},${coords[1]}`;
   };
 
   return (

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, ValidationError } from '@formspree/react';
-import './ContactUs.css';
+// Fixed CSS import path to accurately reflect your new 'styles' folder structure
+import '../styles/views/ContactUs.css';
 
 function ContactUs({ onSubmitSuccess }) {
   const [state, handleSubmit] = useForm("xeednqza");
@@ -121,7 +122,7 @@ function ContactUs({ onSubmitSuccess }) {
 
           <div className="editorial-footer" style={{ marginTop: '30px' }}>
             <Link to="/" className="back-home-link" style={{ textDecoration: 'none', fontWeight: '500' }}>
-              ← Back To Main House
+              &larr; Back To Main House
             </Link>
           </div>
         </div>

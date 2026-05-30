@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { menuItems, categories } from '../data/menuData';
-import './Menu.css'; // Cleanly pulled from your data folder!
+
+// Fixed CSS import path to accurately reflect your new 'styles' folder structure
+import '../styles/views/Menu.css';
 
 export default function Menu() {
   const [activeFilter, setActiveFilter] = useState('all');

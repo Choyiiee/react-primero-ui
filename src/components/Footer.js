@@ -1,6 +1,6 @@
 import React from 'react';
-import './Navbar.css';
-import './Footer.css';
+// Fixed CSS import path to accurately reflect your new 'styles' folder structure
+import '../styles/components/Footer.css';
 
 function Footer() {
   return (

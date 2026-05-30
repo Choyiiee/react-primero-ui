@@ -6,7 +6,7 @@ import HomeView from './views/HomeView';
 import Menu from './views/Menu'; // Imported your new premium Menu view
 import ContactUs from './views/ContactUs';
 import FindStore from './views/FindStore'; 
-import './App.css';
+
 
 function App() {
   const [navActive, setNavActive] = useState(false);

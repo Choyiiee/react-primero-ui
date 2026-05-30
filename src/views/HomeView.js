@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom'; // Added for page routing
+import { useNavigate } from 'react-router-dom';
 import { menuItems } from '../data/menuData';
-import './HomeView.css';
+
+// Fixed CSS import path to accurately reflect your new 'styles' folder structure
+import '../styles/views/HomeView.css';
+
 import primerobroll from '../assets/primerobroll.mp4';
 import ui1 from '../assets/ui1.jpg';
 import ui2 from '../assets/ui2.jpg';
@@ -123,7 +126,8 @@ function HomeView() {
             }}
             whileHover={{ animationPlayState: "paused" }}
           >
-            {menuItems.map((item, index) => (
+            {/* Triplicated mapping array ensures infinite scroll layouts do not clip empty space spaces */}
+            {[...menuItems, ...menuItems, ...menuItems].map((item, index) => (
               <div 
                 className="menu-card tilt-card-3d" 
                 key={index}
@@ -141,7 +145,7 @@ function HomeView() {
                   <h3 className="menu-name">{item.name}</h3>
                   <div className="menu-details">
                     <span className="menu-type-tag">{item.tags ? item.tags[0] : 'Premium'}</span>
-                    <span className="menu-order-cta">Order Now →</span>
+                    <span className="menu-order-cta">Order Now &rarr;</span>
                   </div>
                 </div>
               </div>
@@ -150,7 +154,6 @@ function HomeView() {
         </div>
 
         <div className="menu-footer-actions">
-          {/* Updated: Added click handler redirecting straight to your /menu view route */}
           <button className="menu-discover-btn" onClick={() => navigate('/menu')}>
             <span>Explore Full Menu</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>

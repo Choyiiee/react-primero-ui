@@ -7,15 +7,31 @@
   width: 100%;
 }
 
+/* DESKTOP LAYOUT GRID SYSTEM: 
+   3 columns split precisely down the middle (1fr auto 1fr) 
+   keeps the central column exactly in the horizontal center of the viewport */
 .nav-container {
   max-width: 1400px;
   margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0.5rem 5%;
-  position: relative;
   min-height: 80px;
+}
+
+.nav-grid-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.left-side-wrapper {
+  justify-content: flex-start;
+}
+
+.right-side-wrapper {
+  justify-content: flex-end;
 }
 
 .nav-links {
@@ -23,7 +39,6 @@
   list-style: none;
   gap: 2rem;
   align-items: center;
-  flex: 1;
 }
 
 .left-links { justify-content: flex-start; }
@@ -39,6 +54,7 @@
   position: relative;
   padding-bottom: 4px;
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
 
 .nav-links a::after {
@@ -60,16 +76,16 @@
   transform-origin: bottom left;
 }
 
-/* Custom Highlight style for your active routes */
 .nav-active {
   color: var(--color-accent-gold) !important;
 }
 
+/* CENTRAL LOGO WRAPPER */
 .logo-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 1.5rem;
+  padding: 0 2.5rem;
 }
 
 .logo-img {
@@ -144,28 +160,39 @@
 }
 
 /* ==========================================================================
-   MOBILE RESPONSIVE NAVIGATION OVERHAUL
+    MOBILE RESPONSIVE OVERHAUL (Screens 900px or less)
    ========================================================================== */
 @media (max-width: 900px) {
-  .mobile-toggle { display: flex; }
+  /* Switches navbar container from a Grid layout back into Flex for simple positioning */
+  .nav-container {
+    display: flex;
+    justify-content: flex-start;
+    min-height: 70px;
+    padding: 0 5%;
+  }
 
+  /* Pushes the burger menu to the far left corner */
+  .mobile-toggle { 
+    display: flex; 
+    position: absolute;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Animates bars into an 'X' shape when active */
   .mobile-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .mobile-toggle.active .bar:nth-child(2) { opacity: 0; }
   .mobile-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-  .logo-container, .logo-img {
+  /* COMPLETELY HIDES desktop side columns and the logo container on mobile sizes */
+  .nav-grid-item,
+  .logo-container {
     display: none !important;
   }
 
-  .nav-container {
-    justify-content: flex-start;
-    padding-left: 5%;
-    min-height: 70px;
-    overflow: visible;
-  }
-
-  /* Structural wrapper we added to hold the dynamic open list view */
-  .left-links.open {
+  /* Fullscreen overlay navigation slide-out layout */
+  .nav-links.mobile-open-view {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -175,32 +202,33 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: 100px 0 0 0 !important;
+    padding: 120px 0 0 0 !important;
     gap: 2rem;
     z-index: 999 !important;
     list-style: none;
     display: flex;
   }
 
-  .left-links.open li {
+  .nav-links.mobile-open-view li {
     width: 100%;
     text-align: center;
   }
 
-  .left-links.open a {
-    font-size: 1rem;
+  .nav-links.mobile-open-view a {
+    font-size: 1.2rem;
     display: inline-block;
+    padding: 0.5rem 0;
   }
 
-  .left-links.open .search-bar {
+  .nav-links.mobile-open-view .search-bar {
     width: 85%;
     max-width: 280px;
-    margin: 0.5rem auto 0;
+    margin: 1rem auto 0;
     justify-content: center;
     padding: 0.6rem 1.2rem;
   }
 
-  .left-links.open .search-bar input { 
+  .nav-links.mobile-open-view .search-bar input { 
     width: 100%; 
     font-size: 0.85rem;
   }

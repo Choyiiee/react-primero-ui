@@ -1,0 +1,510 @@
+/* ==========================================================================
+   1. GLOBAL & VARIABLE CONFIGURATIONS
+   ========================================================================== */
+:root {
+  --color-black: #0c0908;
+  --color-dark-surface: #14100e;
+  --color-card-bg: #1c1714;
+  --color-white: #ffffff;
+  --color-cream: #f4f1ea;
+  --color-accent-gold: #c3a37a;
+  --color-text-muted: #a89e94;
+  --color-brown: #3b241b;
+}
+
+/* Reveal on scroll base animations */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Keyframes animations for phone layout mockup widgets */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes floatDelayed {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ==========================================================================
+   2. CINEMA HERO VIDEOGRAPHY SECTION
+   ========================================================================== */
+.hero {
+  position: relative;
+  height: 80vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  padding: 0 1rem;
+  background-color: var(--color-black);
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(12, 9, 8, 0.45) 0%, rgba(12, 9, 8, 0.85) 100%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: var(--color-white);
+  width: 100%;
+  max-width: 800px;
+}
+
+.hero-title {
+  font-family: "Playfair Display", "Georgia", serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  color: var(--color-white);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.hero-subtitle {
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0 0.5rem;
+}
+
+/* ==========================================================================
+   3. BRAND STORY SECTION (Restores Side Cream Layout Framework)
+   ========================================================================== */
+.story-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(4rem, 8vw, 6rem) 10%;
+  background-color: var(--color-cream); 
+  gap: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.story-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.story-text h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin-bottom: 1.5rem;
+  color: var(--color-black); 
+}
+
+.story-text p {
+  color: var(--color-black);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+}
+
+.animated-btn {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.animated-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-black);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.5, 1, 0.89, 1);
+  z-index: -1;
+}
+
+.animated-btn:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.primary-btn {
+  background-color: var(--color-brown); 
+  color: var(--color-cream); 
+  border: none;
+  padding: 12px 35px;
+  border-radius: 25px; 
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.primary-btn:hover {
+  background-color: #2b1a13; 
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   4. APP PHONE WIREFRAME MOCKUPS
+   ========================================================================== */
+.story-image-group {
+  flex: 1;
+  position: relative;
+  height: 450px;
+  width: 100%;
+  max-width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-element { animation: float 5s ease-in-out infinite; }
+.floating-element-delayed { animation: floatDelayed 5.5s ease-in-out infinite; }
+.interactive-phone { cursor: pointer; }
+
+.phone-mockup-left,
+.phone-mockup-right {
+  width: clamp(150px, 30vw, 195px);
+  height: clamp(300px, 6vw, 390px);
+  border: 11px solid #1c1512; 
+  border-radius: 36px;
+  position: absolute;
+  overflow: hidden;
+  background-color: var(--color-white);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.phone-mockup-left {
+  left: 5%;
+  top: 5%;
+  z-index: 1;
+  box-shadow: -5px 12px 22px rgba(28, 21, 18, 0.14), -12px 28px 45px rgba(28, 21, 18, 0.18);
+}
+
+.phone-mockup-right {
+  right: 5%;
+  bottom: 0;
+  z-index: 2;
+  box-shadow: 5px 12px 22px rgba(28, 21, 18, 0.14), 12px 28px 45px rgba(28, 21, 18, 0.18);
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  height: 18px;
+  background: #1c1512;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  z-index: 10;
+}
+
+.phone-screen-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #120e0c;
+  padding-top: 15px;
+}
+
+.phone-embedded-png {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top center;
+  display: block;
+}
+
+.decorative-dot {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-brown);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 15%;
+  left: 46%;
+  z-index: 0;
+  opacity: 0.2;
+}
+
+/* ==========================================================================
+   5. HANDCRAFTED MENU SHOWCASE (With Redesigned Tan/Gold Action Button)
+   ========================================================================== */
+.menu-section {
+  padding: clamp(5rem, 10vw, 7rem) 0;
+  background-color: #161210; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-header-content {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  padding: 0 2rem;
+}
+
+.menu-badge {
+  color: var(--color-accent-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.menu-section .section-title {
+  color: var(--color-cream);
+  font-family: "Playfair Display", "Georgia", serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.menu-section .section-subtitle {
+  color: #a89e94;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.menu-marquee-viewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem 0 4rem 0;
+  position: relative;
+}
+
+.menu-marquee-track {
+  display: flex;
+  gap: 35px;
+  width: max-content;
+}
+
+/* Premium Marquee Menu Display Cards Rules */
+.menu-card {
+  background-color: var(--color-card-bg);
+  border-radius: 20px;
+  width: 290px;
+  overflow: hidden;
+  border: 1px solid rgba(195, 163, 122, 0.06);
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition: transform 0.15s ease-out, border-color 0.3s ease;
+}
+
+.menu-card:hover {
+  border-color: rgba(195, 163, 122, 0.25);
+}
+
+.menu-img-container {
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+}
+
+.menu-item-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.menu-card:hover .menu-item-photo {
+  transform: scale(1.03);
+}
+
+.menu-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 9, 8, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-card:hover .menu-hover-overlay {
+  opacity: 1;
+}
+
+.overlay-action-btn {
+  background: var(--color-cream);
+  color: var(--color-black);
+  padding: 0.5rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.menu-text-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.menu-card-category {
+  color: var(--color-accent-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.menu-name {
+  font-family: "Playfair Display", "Georgia", serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--color-white);
+  margin: 0;
+}
+
+.menu-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.menu-type-tag {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.menu-order-cta {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.8rem;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.menu-card:hover .menu-order-cta {
+  color: var(--color-accent-gold);
+}
+
+/* Explore Full Menu Button Action Row Container */
+.menu-footer-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.menu-discover-btn {
+  background-color: #c4a47a; /* Exact color hex extracted from your new image asset */
+  color: #0c0908; /* Dark text contrast matching your design image precisely */
+  border: none;
+  padding: 14px 45px;
+  border-radius: 20px; /* Completely rounded container corner radius as pictured */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.1px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-discover-btn:hover {
+  background-color: #b5956b; /* Sophisticated darker gold shift on hover */
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   6. HOMEPAGE MEDIA RESPONSIVENESS
+   ========================================================================== */
+@media (max-width: 900px) {
+  .story-section {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 1.5rem;
+    gap: 2.5rem;
+  }
+
+  .story-image-group {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1.5rem;
+    height: auto;
+    max-width: 100%;
+    padding: 1rem 0;
+  }
+
+  .phone-mockup-left, .phone-mockup-right {
+    position: relative;
+    left: auto; right: auto; top: auto; bottom: auto;
+    flex: 0 0 clamp(135px, 32vw, 175px);
+    height: clamp(270px, 64vw, 350px);
+    border-width: 8px;
+  }
+  
+  .phone-notch { height: 12px; }
+  .decorative-dot { display: none; }
+}
+
+@media (max-width: 480px) {
+  .story-image-group { gap: 0.75rem; }
+  .phone-mockup-left, .phone-mockup-right {
+    flex: 0 0 130px;
+    height: 260px;
+    border-width: 6px;
+  }
+}

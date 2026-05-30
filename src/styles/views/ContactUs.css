@@ -1,0 +1,277 @@
+/* ==========================================================================
+   CONTACT US STANDALONE SECTION (Professional Luxury Blueprint)
+   ========================================================================== */
+.contact-standalone-section {
+  min-height: calc(100vh - 80px);
+  background-color: var(--color-black);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 6%; 
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Subtly calibrated ambient background glow */
+.contact-blur-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(195, 163, 122, 0.03) 0%, transparent 75%);
+  bottom: -8%;
+  left: -4%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.contact-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr; 
+  gap: 5rem;
+  align-items: stretch; 
+  z-index: 1;
+}
+
+/* ==========================================================================
+   LEFT PANEL: EDITORIAL CONTENT & DIRECTORY
+   ========================================================================== */
+.contact-editorial-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--color-cream);
+}
+
+.editorial-title {
+  font-family: "Playfair Display", "Georgia", serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 1.5rem 0;
+  color: var(--color-white);
+}
+
+.luxury-directory {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 12px;
+}
+
+/* Minimalist Custom Scrollbar */
+.luxury-directory::-webkit-scrollbar {
+  width: 3px;
+}
+.luxury-directory::-webkit-scrollbar-thumb {
+  background: rgba(195, 163, 122, 0.15);
+  border-radius: 10px;
+}
+
+/* Sleek card styling using strict, clean borders */
+.directory-row {
+  background: #130f0e;
+  border: 1px solid rgba(195, 163, 122, 0.06);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+              background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+              transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.directory-row:hover {
+  border-color: rgba(195, 163, 122, 0.25);
+  background: #1a1412;
+  transform: translateY(-2px); 
+}
+
+.directory-row.active {
+  border-color: var(--color-accent-gold);
+  background: #1c1613;
+}
+
+.directory-num {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--color-accent-gold);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   LINK REMOVAL SYSTEM
+   ========================================================================== */
+/* Targets and completely hides the "Back To Main House" layout node */
+.contact-editorial-panel a, 
+.contact-wrapper a[href*="index"],
+.contact-wrapper a:last-child {
+  display: none !important;
+}
+
+/* ==========================================================================
+   RIGHT PANEL: THE PREMIUM CONTACT FORM CARD
+   ========================================================================== */
+.contact-surface-card {
+  background: #14100e;
+  border: 1px solid rgba(195, 163, 122, 0.08);
+  border-radius: 24px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Typography fix: High contrast visibility for form headers */
+.contact-surface-card h3,
+.contact-surface-card .form-title {
+  font-family: "Playfair Display", "Georgia", serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--color-white); 
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.2px;
+}
+
+.contact-surface-card p,
+.contact-surface-card .form-subtitle {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.9rem;
+  color: var(--color-text-muted); 
+  line-height: 1.5;
+  margin: 0 0 2.5rem 0;
+}
+
+.luxury-interactive-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.floating-field-group {
+  position: relative;
+  width: 100%;
+}
+
+.floating-field-group input,
+.floating-field-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 0;
+  color: var(--color-white);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.floating-field-group textarea {
+  height: 80px;
+  resize: none;
+}
+
+/* Smooth color transition on focus */
+.floating-field-group input:focus,
+.floating-field-group textarea:focus {
+  border-bottom-color: var(--color-accent-gold);
+}
+
+/* Floating Label Engine */
+.floating-field-group label {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.9rem;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  pointer-events: none;
+}
+
+.floating-field-group input:focus ~ label,
+.floating-field-group input:not(:placeholder-shown) ~ label,
+.floating-field-group textarea:focus ~ label,
+.floating-field-group textarea:not(:placeholder-shown) ~ label {
+  top: -14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  color: var(--color-accent-gold);
+}
+
+/* Premium Rounded Action Button */
+.premium-submit-action {
+  width: 100%;
+  background-color: #c4a47a; 
+  color: #0c0908; 
+  border: none;
+  padding: 14px;
+  border-radius: 24px; 
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.premium-submit-action:hover {
+  background-color: #b5956b;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(196, 164, 122, 0.15);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .contact-wrapper {
+    gap: 3rem;
+    padding: 0 2%;
+  }
+  .contact-surface-card {
+    padding: 2.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-standalone-section {
+    padding: 4rem 1.5rem;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr; 
+    gap: 3.5rem;
+  }
+
+  .contact-editorial-panel {
+    text-align: center;
+    align-items: center;
+  }
+
+  .luxury-directory {
+    width: 100%;
+    max-height: 300px;
+    align-items: stretch;
+  }
+  
+  .contact-surface-card {
+    padding: 2.5rem 2rem;
+  }
+}
