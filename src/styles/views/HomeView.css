@@ -180,29 +180,27 @@
 }
 
 /* ==========================================================================
-   4. APP PHONE WIREFRAME MOCKUPS
+   4. APP PHONE WIREFRAME MOCKUPS (Updated: Taller & Container-Focused)
    ========================================================================== */
 .story-image-group {
   flex: 1;
   position: relative;
-  height: 450px;
+  /* Increased height for a taller, more expansive aesthetic */
+  height: 600px; 
   width: 100%;
-  max-width: 450px;
+  max-width: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.floating-element { animation: float 5s ease-in-out infinite; }
-.floating-element-delayed { animation: floatDelayed 5.5s ease-in-out infinite; }
-.interactive-phone { cursor: pointer; }
-
 .phone-mockup-left,
 .phone-mockup-right {
-  width: clamp(150px, 30vw, 195px);
-  height: clamp(300px, 6vw, 390px);
-  border: 11px solid #1c1512; 
-  border-radius: 36px;
+  /* Taller dimensions for the phone containers */
+  width: clamp(200px, 28vw, 240px);
+  height: clamp(450px, 50vw, 520px);
+  border: 12px solid #1c1512; 
+  border-radius: 44px;
   position: absolute;
   overflow: hidden;
   background-color: var(--color-white);
@@ -210,30 +208,17 @@
 }
 
 .phone-mockup-left {
-  left: 5%;
+  left: 0;
   top: 5%;
   z-index: 1;
   box-shadow: -5px 12px 22px rgba(28, 21, 18, 0.14), -12px 28px 45px rgba(28, 21, 18, 0.18);
 }
 
 .phone-mockup-right {
-  right: 5%;
-  bottom: 0;
+  right: 0;
+  bottom: 5%;
   z-index: 2;
   box-shadow: 5px 12px 22px rgba(28, 21, 18, 0.14), 12px 28px 45px rgba(28, 21, 18, 0.18);
-}
-
-.phone-notch {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45%;
-  height: 18px;
-  background: #1c1512;
-  border-bottom-left-radius: 14px;
-  border-bottom-right-radius: 14px;
-  z-index: 10;
 }
 
 .phone-screen-content {
@@ -241,27 +226,16 @@
   height: 100%;
   position: relative;
   background: #120e0c;
-  padding-top: 15px;
 }
 
 .phone-embedded-png {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: top center;
+  /* CRITICAL: Fills the entire phone frame perfectly */
+  object-fit: cover; 
+  /* Keeps the top of the design aligned to the notch area */
+  object-position: top center; 
   display: block;
-}
-
-.decorative-dot {
-  width: 40px;
-  height: 40px;
-  background-color: var(--color-brown);
-  border-radius: 50%;
-  position: absolute;
-  bottom: 15%;
-  left: 46%;
-  z-index: 0;
-  opacity: 0.2;
 }
 
 /* ==========================================================================
@@ -467,44 +441,25 @@
 }
 
 /* ==========================================================================
-   6. HOMEPAGE MEDIA RESPONSIVENESS
+   6. HOMEPAGE MEDIA RESPONSIVENESS (Adjusted for Taller Layout)
    ========================================================================== */
 @media (max-width: 900px) {
   .story-section {
     flex-direction: column;
     text-align: center;
-    padding: 4rem 1.5rem;
-    gap: 2.5rem;
+    padding: 6rem 1.5rem;
+    gap: 4rem;
   }
 
   .story-image-group {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: center;
-    gap: 1.5rem;
     height: auto;
-    max-width: 100%;
-    padding: 1rem 0;
+    min-height: 500px;
   }
 
   .phone-mockup-left, .phone-mockup-right {
     position: relative;
     left: auto; right: auto; top: auto; bottom: auto;
-    flex: 0 0 clamp(135px, 32vw, 175px);
-    height: clamp(270px, 64vw, 350px);
-    border-width: 8px;
-  }
-  
-  .phone-notch { height: 12px; }
-  .decorative-dot { display: none; }
-}
-
-@media (max-width: 480px) {
-  .story-image-group { gap: 0.75rem; }
-  .phone-mockup-left, .phone-mockup-right {
-    flex: 0 0 130px;
-    height: 260px;
-    border-width: 6px;
+    width: 200px;
+    height: 420px;
   }
 }

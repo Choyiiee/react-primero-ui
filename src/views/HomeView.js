@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { menuItems } from '../data/menuData';
 
-// Fixed CSS import path to accurately reflect your new 'styles' folder structure
+// Fixed CSS import path
 import '../styles/views/HomeView.css';
 
 import primerobroll from '../assets/primerobroll.mp4';
@@ -11,7 +11,7 @@ import ui1 from '../assets/ui1.jpg';
 import ui2 from '../assets/ui2.jpg';
 
 function HomeView() {
-  const navigate = useNavigate(); // Initializes the page router engine
+  const navigate = useNavigate();
 
   // Reveal animations on scroll
   useEffect(() => {
@@ -77,12 +77,18 @@ function HomeView() {
           </p>
           <button className="primary-btn animated-btn">Our Story</button>
         </div>
+
         <div className="story-image-group" id="app">
+          {/* Left Phone: Static -4deg tilt + floating */}
           <motion.div 
-            className="phone-mockup-left floating-element interactive-phone"
-            whileHover={{ scale: 1.04, y: -18, rotate: -4 }}
+            className="phone-mockup-left interactive-phone"
+            animate={{ y: [0, -15, 0], rotate: -4 }}
+            transition={{ 
+              y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 0 } 
+            }}
+            whileHover={{ scale: 1.05, rotate: -6, y: -25 }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
             <div className="phone-notch"></div>
             <div className="phone-screen-content">
@@ -90,11 +96,15 @@ function HomeView() {
             </div>
           </motion.div>
           
+          {/* Right Phone: Straight + floating + delayed */}
           <motion.div 
-            className="phone-mockup-right floating-element-delayed interactive-phone"
-            whileHover={{ scale: 1.04, y: -8, rotate: 1 }}
+            className="phone-mockup-right interactive-phone"
+            animate={{ y: [0, -10, 0] }}
+            transition={{ 
+              y: { duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 } 
+            }}
+            whileHover={{ scale: 1.05, rotate: 2, y: -25 }}
             whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
           >
             <div className="phone-notch"></div>
             <div className="phone-screen-content">
@@ -119,14 +129,9 @@ function HomeView() {
           <motion.div 
             className="menu-marquee-track"
             animate={{ x: [ "-33.33%", "0%" ] }}
-            transition={{
-              ease: "linear",
-              duration: 25,
-              repeat: Infinity
-            }}
+            transition={{ ease: "linear", duration: 25, repeat: Infinity }}
             whileHover={{ animationPlayState: "paused" }}
           >
-            {/* Triplicated mapping array ensures infinite scroll layouts do not clip empty space spaces */}
             {[...menuItems, ...menuItems, ...menuItems].map((item, index) => (
               <div 
                 className="menu-card tilt-card-3d" 
